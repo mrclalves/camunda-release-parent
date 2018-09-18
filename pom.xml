@@ -33,22 +33,23 @@
     <nexus.staging.deploy.url>https://app.camunda.com/nexus</nexus.staging.deploy.url>
     <gpg.useagent>true</gpg.useagent>
 
-    <plugin.version.clean>2.6</plugin.version.clean>
-    <plugin.version.source>2.3</plugin.version.source>
-    <plugin.version.compiler>3.1</plugin.version.compiler>
-    <plugin.version.jar>2.5</plugin.version.jar>
-    <plugin.version.javadoc>2.9.1</plugin.version.javadoc>
+    <plugin.version.clean>3.1.0</plugin.version.clean>
+    <plugin.version.source>3.0.1</plugin.version.source>
+    <plugin.version.compiler>3.8.0</plugin.version.compiler>
+    <plugin.version.jar>3.1.0</plugin.version.jar>
+    <plugin.version.javadoc>3.0.1</plugin.version.javadoc>
     <plugin.version.maven-bundle>2.5.3</plugin.version.maven-bundle>
 
     <plugin.version.deploy>2.8.2</plugin.version.deploy>
-    <plugin.version.assembly>2.4.1</plugin.version.assembly>
-    <plugin.version.ejb>2.4</plugin.version.ejb>
-    <plugin.version.war>2.4</plugin.version.war>
-    <plugin.version.ear>2.9.1</plugin.version.ear>
+    <plugin.version.assembly>3.1.0</plugin.version.assembly>
+    <plugin.version.ejb>3.0.1</plugin.version.ejb>
+    <plugin.version.war>3.2.2</plugin.version.war>
+    <plugin.version.ear>3.0.1</plugin.version.ear>
     <plugin.version.rar>2.4</plugin.version.rar>
-    <plugin.version.gpg>1.4</plugin.version.gpg>
+    <plugin.version.gpg>1.6</plugin.version.gpg>
     <plugin.version.release>2.5.3</plugin.version.release>
     <plugin.version.nexus-staging>1.6.8</plugin.version.nexus-staging>
+    <plugin.version.enforcer>1.4.1</plugin.version.enforcer>
   </properties>
 
   <build>
@@ -73,10 +74,10 @@
           <artifactId>maven-jar-plugin</artifactId>
           <version>${plugin.version.jar}</version>
           <configuration>
-            <useDefaultManifestFile>true</useDefaultManifestFile>
             <archive>
               <!-- explicitly specify manifestFile because otherwise it overrides the generated one from bundle-plugin -->
               <manifest>
+                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               </manifest>
             </archive>
@@ -186,6 +187,11 @@
           <artifactId>maven-bundle-plugin</artifactId>
           <version>${plugin.version.maven-bundle}</version>
           <extensions>true</extensions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>${plugin.version.enforcer}</version>
         </plugin>
       </plugins>
     </pluginManagement>
